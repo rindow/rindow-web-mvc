@@ -1,0 +1,48 @@
+{
+    "name": "rindow/rindow-web-mvc",
+    "type": "library",
+    "description": "Web-MVC framework based on PSR-7 middleware",
+    "keywords": ["rindow","framework","web","mvc","PSR-7"],
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=5.3.3",
+        "psr/http-message": "^1.0",
+        "rindow/rindow-event": "*"
+    },
+    "require-dev": {
+        "rindow/rindow-stdlib": "*",
+        "rindow/rindow-container": "*",
+        "rindow/rindow-web-http": "*",
+        "rindow/rindow-web-router": "*",
+        "rindow/rindow-web-form": "*",
+        "rindow/rindow-web-view": "*"
+    },
+    "suggest": {
+        "rindow/rindow-container": "It needs some service container",
+        "rindow/rindow-web-http": "It needs some http message library",
+        "rindow/rindow-web-view": "Minimum Web-view template engine",
+        "rindow/rindow-web-router": "It needs some Web routing engine",
+        "rindow/rindow-module-twig": "Standard Web-view template engine",
+        "rindow/rindow-module-smarty": "Classic Web-view template engine",
+        "rindow/rindow-module-whoops": "Alternative error handler",
+        "rindow/rindow-module-fastroute": "Alternative Web routing engine"
+    },
+    "autoload": {
+        "psr-0": {
+            "Rindow\\Web\\Mvc\\": "src/"
+        }
+    },
+
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://rindow.github.io/rindow-packagist/packages.json",
+            "options": {
+                "ssl": {
+                    "verify_peer": "true"
+                }
+            }
+        }
+    ],
+    "minimum-stability": "dev"
+}

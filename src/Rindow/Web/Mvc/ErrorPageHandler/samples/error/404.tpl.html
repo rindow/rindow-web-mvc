@@ -1,0 +1,31 @@
+{extends file='layout/layout.tpl.html'}
+
+{block name=title}Page Not Found{/block}
+
+{block name=body}
+<div class="row">
+<h1>Page Not Found</h1>
+{if $policy['display_detail']}
+<h4>Message: {$message}</h4>
+<hr>
+{foreach $dataTables as $dataTable}
+<h3>{$dataTable['label']}</h3>
+<dl>
+{foreach $dataTable['data'] as $name => $value}
+<dt>{$name}</dt>
+<dd>{$value}</dd>
+{/foreach}
+</dl>
+{/foreach}
+<hr>
+<p>Exception: {$exception}</p>
+<p>Code: {$code}</p>
+<p>Message: {$message}</p>
+<p>Source: {$file}({$line})</p>
+<p>Trace:</p>
+<pre>
+{$trace}
+</pre>
+{/if}
+</div>
+{/block}
