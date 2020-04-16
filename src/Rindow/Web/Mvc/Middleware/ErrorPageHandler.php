@@ -40,6 +40,8 @@ class ErrorPageHandler
             throw $e;
         } catch(\Exception $e) {
             $status = 503;
+        } catch(\Error $e) {
+            $status = 503;
         }
         if(isset($this->config['unittest']) && $this->config['unittest']) {
             restore_error_handler();

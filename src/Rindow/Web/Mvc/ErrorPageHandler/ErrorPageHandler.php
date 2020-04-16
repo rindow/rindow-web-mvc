@@ -32,12 +32,12 @@ class ErrorPageHandler
     protected $status;
     protected $debug;
     protected $logger;
-    
+
     public function setServiceLocator($serviceLocator)
     {
         $this->serviceLocator = $serviceLocator;
     }
-    
+
     public function setViewManagerName($viewManagerName)
     {
         $this->viewManagerName = $viewManagerName;
@@ -80,10 +80,10 @@ class ErrorPageHandler
         throw new \ErrorException($message,0,$level,$file,$line);
     }
 
-    public function handleException(ServerRequestInterface $request, ResponseInterface $response, \Exception $e)
+    public function handleException(ServerRequestInterface $request, ResponseInterface $response, $e)
     {
         $type = $this->determineContentType($request);
-        if(($type=='text/html' || $type=='text/plain') && 
+        if(($type=='text/html' || $type=='text/plain') &&
             isset($this->config['error_policy']['redirect_url'])) {
             return $this->redirect($request, $response,$this->config['error_policy']['redirect_url']);
         }
@@ -92,19 +92,19 @@ class ErrorPageHandler
             case 'text/html':
                 $response = $this->renderView($request, $response, $e);
                 break;
-            
+
             case 'text/plain':
                 $response = $this->renderText($request, $response, $e);
                 break;
-            
+
             case 'application/json':
                 $response = $this->renderJson($request, $response, $e);
                 break;
-            
+
             case 'application/xml':
                 $response = $this->renderXml($request, $response, $e);
                 break;
-            
+
             default:
                 throw new Exception\DomainException('invalid handler type:'.$type);
         }
